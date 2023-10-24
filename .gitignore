@@ -1,0 +1,7 @@
+__pycache__
+.venv
+.venv/*
+.idea
+# OpenAI secret keys
+.env
+/.venv/*
