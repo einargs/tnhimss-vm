@@ -44,6 +44,9 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "egs3d@mtmail.mtsu.edu";
+    certs."audio.einargs.dev".extraDomainNames = [
+      "query.einargs.dev"
+    ];
   };
   services.nginx = {
     enable = true;
@@ -60,7 +63,6 @@
         # We'll turn this on once we have a certificate
         enableACME = true;
         forceSSL = true;
-        serverAliases = [ "query.einargs.dev" ];
         # addSSL = true;
         locations."/" = {
           root = "${audio-site}/";
