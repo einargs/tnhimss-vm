@@ -37,10 +37,10 @@
     enable = true;
     port = 8080;
   };
-  /*services.query-backend = {
+  services.query-backend = {
     enable = true;
     port = 8180;
-  };*/
+  };
   security.acme = {
     acceptTerms = true;
     defaults.email = "egs3d@mtmail.mtsu.edu";
