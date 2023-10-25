@@ -2,19 +2,22 @@
   imports = [
     # For local testing uncomment this
     # ./local.nix
+    "${modulesPath}/virtualisation/azure-image.nix"
   ];
   # Enabled because of audio
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
     "openssl-1.1.1v"
   ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     git
     vim
+    tmux
   ];
   networking.firewall.allowedTCPPorts = [ 80 443 8080 ];
   users.mutableUsers = false;
-  networking.hostName = "visit-notes"; # old but no need to change
+  networking.hostName = "mtsu-tnhimss";
 
   users.users.mtsu = {
     isNormalUser = true;
@@ -82,6 +85,7 @@
       "query.einargs.dev" = {
         # We'll turn this on once we have a certificate
         forceSSL = true;
+        useACMEHost = "audio.einargs.dev";
         locations."/" = {
           root = "${query-site}/";
           # priority = 100;
