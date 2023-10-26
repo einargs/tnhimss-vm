@@ -51,5 +51,15 @@
     # To get an image we can deploy to azure do:
     # nix build .#nixosConfigurations.my-machine.config.formats.azure
     nixosConfigurations.azure-vm = azure-image;
+
+    devShells.x86_64-linux.default = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        azure-cli
+      ];
+      src = [
+        ./flake.nix
+        ./flake.lock
+      ];
+    };
   };
 }
