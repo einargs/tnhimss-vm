@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
+    apoc-jar = {
+      url = "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar";
+      flake = false;
+    };
     audio = {
       # type = "git";
       # url = "file:///home/einargs/Coding/Python/visitNotes/";
@@ -24,7 +28,7 @@
     bash-prompt = ''\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]dev-shell:\w]\$\[\033[0m\] '';
   };
 
-  outputs = { self, nixpkgs, audio, query, nixos-generators }: 
+  outputs = { self, nixpkgs, apoc-jar, audio, query, nixos-generators }: 
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -36,6 +40,7 @@
       azure-image = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
+          inherit apoc-jar;
           audio-site = audio.packages.${system}.site;
           query-site = query.packages.${system}.site;
         };

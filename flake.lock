@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "apoc-jar": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-fa8YPrFVG0RMzcv7DtqLWCKGis/tWpmXSw6tlCTpunY=",
+        "type": "file",
+        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar"
+      }
+    },
     "audio": {
       "inputs": {
         "nixos-generators": "nixos-generators",
@@ -261,6 +273,7 @@
     },
     "root": {
       "inputs": {
+        "apoc-jar": "apoc-jar",
         "audio": "audio",
         "nixos-generators": "nixos-generators_2",
         "nixpkgs": "nixpkgs",

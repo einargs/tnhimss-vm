@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, audio-site, query-site, ... }: {
+{ pkgs, modulesPath, apoc-jar, audio-site, query-site, ... }: {
   imports = [
     # For local testing uncomment this
     # ./local.nix
@@ -18,6 +18,18 @@
   networking.firewall.allowedTCPPorts = [ 80 443 8080 ];
   users.mutableUsers = false;
   networking.hostName = "mtsu-tnhimss";
+
+  services.neo4j = {
+    enable = true;
+    bolt.enable = true;
+    directories.import = "/home/mtsu/neo4j-import";
+    directories.plugins = 
+      let plugin-dir = pkgs.runCommand ''
+      mkdir $out
+      ln -s ${apoc-jar} $out/apoc-core.jar
+      '';
+      in plugin-dir;
+  };
 
   users.users.mtsu = {
     isNormalUser = true;
