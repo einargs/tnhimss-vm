@@ -245,11 +245,11 @@
         "poetry2nix": "poetry2nix_2"
       },
       "locked": {
-        "lastModified": 1698377311,
-        "narHash": "sha256-xc6q5ZE7YZksnHbn7oY3YqoH41G5nJviRTAn/rwt/Qs=",
+        "lastModified": 1698384389,
+        "narHash": "sha256-BBHYZ4f5SClYfx7l0iymcyKmiqb1/v/tGszHis+a/54=",
         "owner": "einargs",
         "repo": "tnhimss-bill",
-        "rev": "1e79d4c1765d052fb92bf2a1ebc5c68964e1d92f",
+        "rev": "12f350e3c8be33dc3d507099e525ae0940532226",
         "type": "github"
       },
       "original": {
