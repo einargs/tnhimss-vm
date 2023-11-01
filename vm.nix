@@ -22,7 +22,7 @@
   services.neo4j = {
     enable = true;
     bolt.enable = true;
-    directories.import = "/home/mtsu/neo4j-import";
+    directories.imports = "/home/mtsu/neo4j-import";
     directories.plugins = 
       let plugin-dir = pkgs.runCommand ''
       mkdir $out
