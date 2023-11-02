@@ -20,6 +20,7 @@
   networking.hostName = "mtsu-tnhimss";
 
   services.neo4j = {
+    #package = neo4j;
     enable = true;
     http.enable = false;
     https.enable = false;
