@@ -3,13 +3,13 @@
     "apoc-jar": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-fa8YPrFVG0RMzcv7DtqLWCKGis/tWpmXSw6tlCTpunY=",
+        "narHash": "sha256-Qde5LB9Mx30VPLDIo0ZAUVNcz+2Apiadpvc+Jhk1NyY=",
         "type": "file",
-        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar"
+        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.8/apoc-4.4.0.8-core.jar"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar"
+        "url": "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.8/apoc-4.4.0.8-core.jar"
       }
     },
     "audio": {

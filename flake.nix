@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
     apoc-jar = {
-      url = "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.22/apoc-4.4.0.22-core.jar";
+      # To find the exact version of apoc to download, you can manually
+      # download the tar.gz file the nixpkgs version of neo4j
+      # downloads and check inside the labs directory.
+      url = "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.4.0.8/apoc-4.4.0.8-core.jar";
       flake = false;
     };
     audio = {

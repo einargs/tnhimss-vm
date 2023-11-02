@@ -21,14 +21,21 @@
 
   services.neo4j = {
     enable = true;
+    http.enable = false;
+    https.enable = false;
     bolt.enable = true;
+    bolt.sslPolicy = "default";
+    bolt.tlsLevel = "DISABLED";
     directories.imports = "/home/mtsu/neo4j-import";
     directories.plugins = 
-      let plugin-dir = pkgs.runCommand ''
+      let plugin-dir = pkgs.runCommand "plugin-dir" {} ''
       mkdir $out
       ln -s ${apoc-jar} $out/apoc-core.jar
       '';
-      in plugin-dir;
+      in "${plugin-dir}";
+    ssl.policies.default = {
+      clientAuth = "NONE";
+    };
   };
 
   users.users.mtsu = {
