@@ -3,7 +3,12 @@
     # For local testing uncomment this
     # ./local.nix
     "${modulesPath}/virtualisation/azure-image.nix"
+    # Local version edited to deal with changes in latest version
+    ./neo4j-module.nix
   ];
+  # Disable so we can use a local version edited to keep up with the latest
+  # version.
+  disabledModules = [ "services/databases/neo4j.nix" ];
   # Enabled because of audio
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
@@ -25,7 +30,7 @@
     http.enable = false;
     https.enable = false;
     bolt.enable = true;
-    bolt.sslPolicy = "default";
+    # bolt.sslPolicy = "default";
     bolt.tlsLevel = "DISABLED";
     directories.imports = "/home/mtsu/neo4j-import";
     directories.plugins = 
@@ -34,9 +39,9 @@
       ln -s ${apoc-jar} $out/apoc-core.jar
       '';
       in "${plugin-dir}";
-    ssl.policies.default = {
+    /*ssl.policies.bolt = {
       clientAuth = "NONE";
-    };
+    };*/
   };
 
   users.users.mtsu = {

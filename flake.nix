@@ -38,10 +38,28 @@
             sha256 = "0zn282x67wvl8dd0ss4gx7xazvygmg6f2a7vb15hmp06rlzclznh";
           };
       neo4j-overlay = final: prev: {
-        neo4j = prev.neo4j.overrideAttrs {
+        neo4j = (prev.neo4j.overrideAttrs {
           version = "5.13.0";
           src = latest-neo4j;
-        };
+          installPhase = with pkgs; ''
+            mkdir -p "$out/share/neo4j"
+            cp -R * "$out/share/neo4j"
+
+            mkdir -p "$out/bin"
+            for NEO4J_SCRIPT in neo4j neo4j-admin cypher-shell
+            do
+                chmod +x "$out/share/neo4j/bin/$NEO4J_SCRIPT"
+                makeWrapper "$out/share/neo4j/bin/$NEO4J_SCRIPT" \
+                    "$out/bin/$NEO4J_SCRIPT" \
+                    --prefix PATH : "${lib.makeBinPath [ jdk17 which gawk ]}" \
+                    --set JAVA_HOME "${jdk17}"
+            done
+
+            patchShebangs $out/share/neo4j/bin/neo4j-admin
+            # user will be asked to change password on first login
+            $out/bin/neo4j-admin dbms set-initial-password pleaseletmein
+          '';
+        });
       };
       pkgs = import nixpkgs {
         inherit system;
