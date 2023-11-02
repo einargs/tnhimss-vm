@@ -37,6 +37,8 @@ let
   serverConfig = pkgs.writeText "neo4j.conf" ''
     # TODO: make this a config option
     dbms.security.auth_enabled=false
+    # TODO: make *this* a config option
+    dbms.security.procedures.unrestricted=apoc.meta.data
     # General
     dbms.allow_upgrade=${boolToString cfg.allowUpgrade}
     dbms.default_listen_address=${cfg.defaultListenAddress}

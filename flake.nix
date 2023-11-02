@@ -72,7 +72,13 @@
       azure-image = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          apoc-jar = "${latest-neo4j}/labs/apoc-5.13.0-core.jar";
+          apoc-jar = "${latest-neo4j}/labs/";
+          # Previously with the flake input of a single file needed:
+          # let plugin-dir = pkgs.runCommand "plugin-dir" {} ''
+          #   mkdir $out
+          #   ln -s ${apoc-jar} $out/apoc-core.jar
+          # '';
+          # in "${plugin-dir}";
           audio-site = audio.packages.${system}.site;
           query-site = query.packages.${system}.site;
         };

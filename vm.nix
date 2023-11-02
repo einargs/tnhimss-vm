@@ -33,12 +33,7 @@
     # bolt.sslPolicy = "default";
     bolt.tlsLevel = "DISABLED";
     directories.imports = "/home/mtsu/neo4j-import";
-    directories.plugins = 
-      let plugin-dir = pkgs.runCommand "plugin-dir" {} ''
-      mkdir $out
-      ln -s ${apoc-jar} $out/apoc-core.jar
-      '';
-      in "${plugin-dir}";
+    directories.plugins = "${apoc-jar}";
     /*ssl.policies.bolt = {
       clientAuth = "NONE";
     };*/
